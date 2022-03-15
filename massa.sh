@@ -26,6 +26,11 @@ case $CHOICE in
 1) # 1 - NODE INSTALLATION
 sudo apt update -y && sudo apt upgrade -y < "/dev/null"
 sudo apt install curl make clang pkg-config libssl-dev build-essential git mc jq unzip wget -y
+sudo curl https://sh.rustup.rs -sSf | sh -s -- -y
+source "$HOME"/.cargo/env
+sleep 1
+rustup toolchain install nightly
+rustup default nightly
 cd "$HOME" || exit
 wget https://github.com/massalabs/massa/releases/download/TEST.8.0/massa_TEST.8.0_release_linux.tar.gz
 tar -xvf massa_TEST*
@@ -72,12 +77,13 @@ max_in_nonbootstrap_connections = 9
 
 [bootstrap]
 # list of bootstrap (ip, node id)
-bootstrap_list = 
-    [["149.202.86.103:31245", "5GcSNukkKePWpNSjx9STyoEZniJAN4U4EUzdsQyqhuP3WYf6nj"],
+bootstrap_list = [
+    ["149.202.86.103:31245", "5GcSNukkKePWpNSjx9STyoEZniJAN4U4EUzdsQyqhuP3WYf6nj"],
     ["149.202.89.125:31245", "5wDwi2GYPniGLzpDfKjXJrmHV3p1rLRmm4bQ9TUWNVkpYmd4Zm"],
     ["158.69.120.215:31245", "5QbsTjSoKzYc8uBbwPCap392CoMQfZ2jviyq492LZPpijctb9c"],
     ["158.69.23.120:31245", "8139kbee951YJdwK99odM7e6V3eW7XShCfX5E2ovG3b9qxqqrq"],
-    ["93.29.134.115:31245", "7hx5EnXjTBWUvqDtVuEzyiQQTdNY6zycDi7GVxr7AqZ19Rzg9o"]]
+    ["93.29.134.115:31245", "7hx5EnXjTBWUvqDtVuEzyiQQTdNY6zycDi7GVxr7AqZ19Rzg9o"],
+]
 # refuse consecutive bootstrap attempts from a given IP when the interval between them is lower than per_ip_min_interval milliseconds
 per_ip_min_interval = 3600000
 EOF
