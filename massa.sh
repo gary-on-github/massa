@@ -9,11 +9,11 @@ CHOICE=$(
 whiptail --title "Massa Manager" --menu "Make a Choice" 25 78 16 \
 	"1" "Node Installation."   \
 	"2" "Start Client." \
-    "3" "Start Node Service." \
-    "4" "Stop Node Service." \
-    "5" "Create Wallet. - Only run once" \
-    "6" "View wallet." \
-    "7" "Check Journalctl." \
+   	"3" "Start Node Service." \
+   	"4" "Stop Node Service." \
+   	"5" "Create Wallet. - Only run once" \
+   	"6" "View wallet." \
+    	"7" "Check Journalctl." \
 	"8" "End script"  3>&2 2>&1 1>&3	
 )
 
@@ -58,6 +58,8 @@ EOF
 sudo systemctl restart systemd-journald
 sudo systemctl daemon-reload
 sudo systemctl enable massa
+sudo systemctl start massa
+echo "Starting Massa Node"
 
 echo "Adding firewall rules"  
 sudo ufw allow 31244  
