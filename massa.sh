@@ -1,6 +1,6 @@
 #!/bin/bash
 # Version 0.0.1
-sudo apt install curl -y < "/dev/null"
+
 curl -s https://raw.githubusercontent.com/testnets-io/core/main/logo.sh | bash # grab testnets.io ascii logo
 
 sleep 1
@@ -9,10 +9,10 @@ CHOICE=$(
 whiptail --title "Massa Manager" --menu "Make a Choice" 25 78 16 \
 	"1" "Node Installation."   \
 	"2" "Start Client." \
-   	"3" "Start Node Service." \
+    	"3" "Start Node Service." \
    	"4" "Stop Node Service." \
-   	"5" "Create Wallet. - Only run once" \
-   	"6" "View wallet." \
+	"5" "Create Wallet. - Only run once" \
+    	"6" "View wallet." \
     	"7" "Check Journalctl." \
 	"8" "End script"  3>&2 2>&1 1>&3	
 )
@@ -58,8 +58,7 @@ EOF
 sudo systemctl restart systemd-journald
 sudo systemctl daemon-reload
 sudo systemctl enable massa
-sudo systemctl start massa
-echo "Starting Massa Node"
+
 
 echo "Adding firewall rules"  
 sudo ufw allow 31244  
@@ -166,6 +165,8 @@ bootstrap_list = [
 per_ip_min_interval = 3600000
 EOF
 echo "Community bootstrap ip addresses added"
+sudo systemctl start massa
+echo "Starting Massa Node"
 ;;
 
 2) # 2 - START CLIENT
