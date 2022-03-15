@@ -1,6 +1,6 @@
 #!/bin/bash
 # Version 0.0.1
-
+sudo apt install curl -y < "/dev/null"
 curl -s https://raw.githubusercontent.com/testnets-io/core/main/logo.sh | bash # grab testnets.io ascii logo
 
 sleep 1
