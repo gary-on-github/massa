@@ -32,7 +32,7 @@ sleep 1
 rustup toolchain install nightly
 rustup default nightly
 cd "$HOME" || exit
-wget https://github.com/massalabs/massa/releases/download/TEST.8.0/massa_TEST.8.0_release_linux.tar.gz
+wget https://github.com/massalabs/massa/releases/download/TEST.9.2/massa_TEST.9.2_release_linux.tar.gz
 tar -xvf massa_TEST*
 
 sudo tee <<EOF >/dev/null /etc/systemd/system/massa.service
